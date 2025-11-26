@@ -39,7 +39,7 @@
     <string/>
    </property>
    <property name="pixmap">
-    <pixmap>../../../../home/user12/Downloads/FELV-cat.jpg</pixmap>
+    <pixmap>../../../../home/user12/Downloads/unnamed.jpg</pixmap>
    </property>
    <property name="scaledContents">
     <bool>true</bool>
