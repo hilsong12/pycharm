@@ -24,20 +24,24 @@ class Exam(QWidget, form_window):
 
 
     def button_slot(self):
-        capture = cv2.VideoCapture()
+        capture = cv2.VideoCapture(0)
         capture.set(cv2.CAP_PROP_FRAME_WIDTH,640)
         capture.set(cv2.CAP_PROP_FRAME_HEIGHT, 640)
         flag = True
         while flag:
             ret,frame = capture.read()
+            cv2.imwrite('./capture.png',frame)
             cv2.imshow('videoFrame',frame)
+
+            pixmap=QPixmap('./capture.png')
+            self.label.setPixmap(pixmap)
 
             key = cv2.waitKey(33)
             if key == 27:
                 flag = False
 
         try:
-          img = Image.open(self.path[0])
+          img = Image.open('./capture.png')
           img = img.convert('RGB')  # RGB 3채널로 변환
           img = img.resize((64, 64))  # 모델 입력에 맞게 리사이즈
           data = np.asarray(img)  # numpy 배열 변환
